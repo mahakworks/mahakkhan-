@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Amazon clone-Mahak</title>
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box box-sizing: border-box;
+    }
+    
+    body {
+      font-family: Arial, sans-serif;
+      background-color:#e3e6e6; 
+    }
+    
+    /*navbar*/
+    .navbar{
+      background-color: #131921;
+      color:white;
+      display: flex;
+      align-items: center;
+      padding: 10px 20px;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    
+    .navbar img {
+      width: 100px;
+      cursor: pointer;
+    }
+    
+  .navbar h2{
+      font-size: 22px;
+      color: #ff9900;
+      margin-left: 10px;
+      font font-weight: bold;
+    }
+
+    .navbar-left{
+     display: flex; 
+     align-items: center;
+     gap: 10px;
+    }
+
+    .search-box{
+      flex: 1;
+      display: flex;
+      margin: 0 20px;
+    }
+
+    .search-box input {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      outline: none;
+      border-radius: 4px 0 0 4px;
+      font-size: 15px;
+    }
+
+    .search-box button{
+      background-color: #febd69;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      border-radius: 0 4px 4px 0;
+      transition: 0.3s;
+    }
+
+    .search-box button:hover {
+      background-color: #f3a847;
+    }
+
+    .nav-links{
+      display: flex;
+      gap: 20px;
+      font-size:14px ;
+    }
+
+    .nav-links span {
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .nav-links span:hover {
+      color: #febd69;
+    }
+
+    /*category menu*/
+    .category-bar{
+      background-color: #232f3e;
+      color: white;
+      display: flex;
+      gap: 20px;
+      padding: 12px 20px;
+      font-size: 14px;
+      overflow-x: auto;
+    }
+
+    .category-bar span{
+      cursor: pointer;
+      white-space: nowrap;
+      transition: 0.3s;
+    }
+
+    .category-bar span:hover {
+      color: #febd69;
+    }
+
+    /* Banner */
+    .banner {
+      background: url('https://m.media-amazon.com/images/I/61lwJy4B8PL._SX3000_.jpg') no-repeat center center/cover;
+      height: 400px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+    }
+
+        .banner h1 {
+      background: rgba(0,0,0,0.6);
+      color: white;
+      padding: 15px 25px;
+      border-radius: 6px;
+      margin-bottom: 30px;
+      font-size: 28px;
+    }
+
+    /* Offers Section */
+    .offers {
+      background: #fff;
+      margin: 20px;
+      padding: 20px;
+      border-radius: 8px;
+    }
+
+    .offers h2 {
+      margin-bottom: 15px;
+      font-size: 20px;
+      color: #B12704;
+    }
+
+      .offer-items {
+      display: flex;
+      gap: 20px;
+      overflow-x: auto;
+    }
+
+     /* Offers Section */
+    .offers {
+      background: #fff;
+      margin: 20px;
+      padding: 20px;
+      border-radius: 8px;
+    }
+
+    .offers h2 {
+      margin-bottom: 15px;
+      font-size: 20px;
+      color: #B12704;
+    }
+
+    .offer-items {
+      display: flex;
+      gap: 20px;
+      overflow-x: auto;
+    }
+
+    .offer-items img {
+      width: 220px;
+      height: 220px;
+      object-fit: contain;
+      border-radius: 8px;
+      transition: 0.3s;
+    }
+
+    .offer-items img:hover {
+      transform: scale(1.05);
+    }
+
+    /* Products Grid */
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      padding: 30px;
+    }
+
+    .product {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+      text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .product:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+    }
+
+    .product img {
+      max-width: 100%;
+      height: 180px;
+      object-fit: contain;
+      margin-bottom: 15px;
+    }
+
+    .product h3 {
+      font-size: 18px;
+      margin-bottom: 5px;
+      color: #0f1111;
+    }
+
+    .product p {
+      font-size: 16px;
+      font-weight: bold;
+      margin: 5px 0 10px;
+      color: #B12704;
+    }
+
+    .product button {
+      background-color: #ffd814;
+      border: none;
+      padding: 10px 15px;
+      font-size: 14px;
+      cursor: pointer;
+      border-radius: 6px;
+      transition: 0.3s;
+    }
+
+    .product button:hover {
+      background-color: #f7ca00;
+    }
+
+    /* Footer */
+    .footer {
+      background-color: #131921;
+      color: white;
+      text-align: center;
+      padding: 30px 20px;
+      margin-top: 30px;
+    }
+
+    .footer a {
+      color: #febd69;
+      margin: 0 10px;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
+    }
+
+    .footer p {
+      margin-top: 15px;
+      font-size: 13px;
+      color: #ccc;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <div class="navbar">
+    <div class="navbar-left">
+      <img src="https://pngimg.com/uploads/amazon/amazon_PNG11.png" alt="Amazon Logo">
+      <h2>Mahak</h2>
+    </div>
+    <div class="search-box">
+      <input type="text" placeholder="Search Amazon...">
+      <button>Search</button>
+    </div>
+    <div class="nav-links">
+      <span>Hello, Sign in</span>
+      <span>Orders</span>
+      <span>Cart</span>
+    </div>
+  </div>
+
+  <!-- Category Menu -->
+  <div class="category-bar">
+    <span>All</span>
+    <span>Best Sellers</span>
+    <span>Mobiles</span>
+    <span>Fashion</span>
+    <span>Electronics</span>
+    <span>Home & Kitchen</span>
+    <span>Books</span>
+    <span>Beauty</span>
+    <span>Toys</span>
+    <span>Sports</span>
+    <span>Prime</span>
+  </div>
+
+  <!-- Banner -->
+  <div class="banner">
+    <h1>Welcome to Mahak's Amazon Clone</h1>
+  </div>
+
+  <!-- Offers -->
+  <div class="offers">
+    <h2>🔥 Deal of the Day</h2>
+    <div class="offer-items">
+      <img src="https://m.media-amazon.com/images/I/61-r9zOKBCL.AC_UL480_FMwebp_QL65.jpg" alt="Offer 1">
+      <img src="https://m.media-amazon.com/images/I/81drfTT9ZfL.AC_UY218.jpg" alt="Offer 2">
+      <img src="https://m.media-amazon.com/images/I/71geVdy6-OS.AC_UY218.jpg" alt="Offer 3">
+      <img src="https://www.mrsilicone.co.in/wp-content/uploads/2020/12/Cosmetic-Silicones-Application-Of-Silicone-Oil-In-Cosmetics.jpg" alt="Offer 4">
+      <img src="https://cdn.fstoppers.com/styles/large-16-9/s3/wp-content/uploads/2014/04/Clothing-Product-Photography.jpg"alt="Offer 5">
+      <img src="https://i5.walmartimages.com/asr/5afd8abf-1579-4e35-ba0c-44d742bc13ef.d5c1ae91e8363985487ec77f3e921052.jpeg"alt="Offer 6">
+      <img src="https://cricketpro.b-cdn.net/wp-content/uploads/2020/09/EW_Grand_1024x1024.jpg"alt="Offer 7">
+    </div>
+  </div>
+
+  <!-- Products -->
+  <div class="products">
+    <div class="product">
+      <img src=https://intercomp.com.mt/wp-content/uploads/2022/09/Apple-iPhone-14-Blue.jpg alt="i Apple-iPhone-14-Blue">
+      <h3>i phone 14</h3>
+      <p>$799</p>
+      <button>Add to Cart</button>
+    </div>
+
+    <div class="product">
+      <img src="https://cdn.pixabay.com/photo/2020/04/19/16/33/headphones-5064411_1280.jpg" alt="Headphones">
+      <h3>Headphones</h3>
+      <p>$199</p>
+      <button>Add to Cart</button>
+    </div>
+
+    <div class="product">
+      <img src="https://www.buyandship.com.my/contents/uploads/2023/08/Smart-Wearable-Devices-to-Shop-2-1.jpg" alt="Smartwatch">
+      <h3>Smartwatch</h3>
+      <p>$149</p>
+      <button>Add to Cart</button>
+    </div>
+
+    <div class="product">
+      <img src="https://microless.com/cdn/products/f026b0f0fb6302d095eda73e25215408-hi.jpg" alt="Laptop">
+      <h3>laaptop</h3>
+      <p>$999</p>
+      <button>Add to Cart</button>
+    </div>
+
+    <div class="product">
+      <img src="https://ae01.alicdn.com/kf/HTB1xnskbVGWBuNjy0Fbq6z4sXXaf/New-Arrival-Spring-Summer-Comfortable-Casual-Shoes-Mens-Canvas-Shoes-For-Men-Lace-Up-Brand-Fashion.jpg" alt="Shoes">
+      <h3>Running Shoes</h3>
+      <p>$79</p>
+      <button>Add to Cart</button>
+    </div>
+
+    <div class="product">
+      <img src="https://www.betta.com.au/media/catalog/product/P/A/PANASONIC_MICROWAVE_NNSF574SQPQ_IPN420361.A.JPG" alt="Microwave">
+      <h3>Microwave Oven</h3>
+      <p>$249</p>
+      <button>Add to Cart</button>
+    </div>
+
+    <div class="product">
+      <img src="https://static.honeykidsasia.com/wp-content/uploads/2023/07/Amanda-11.png" alt="Toy">
+      <h3>toy</h3>
+      <p>$39</p>
+      <button>Add to Cart</button>
+    </div>
+
+    <div class="product">
+      <img src="https://m.media-amazon.com/images/I/91wFR+tHmTL._AC_UF1000,1000_QL80_.jpg" alt="Book">
+      <h3>Motivational Book</h3>
+      <p>$19</p>
+      <button>Add to Cart</button>
+    </div>
+    <div class="product">
+      <img src="https://m.media-amazon.com/images/I/71v-GfltDgL.jpg" alt="earbuds">
+      <h3>Earbuds</h3>
+      <p>$12</p>
+      <button>Add to Card</button>
+    </div>
+       
+    <div class="product">
+      <img src="https://bucketdaddy.com/wp-content/uploads/2023/09/bucketdaddy-home-kitchen-products-list.jpg" alt="Kitchen products">
+      <h3>Kitchen products</h3>
+      <p>$22</p>
+      <button>Add to Card</button>
+
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <a href="#">About Us</a>
+    <a href="#">Careers</a>
+    <a href="#">Help</a>
+    <a href="#">Privacy Policy</a>
+    <p>© 2025 Mahak Amazon Clone|Created for Learning</p>
+  </div>
+
+</body>
+</html>
